@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, Table } from 'reactstrap'
-
-function ProductTables({ products, deleteProduct, toggle,setEditProduct}) {
+import { v4 as uuidv4 } from 'uuid';
+function ProductTables({ products, deleteProduct, toggle, setEditProduct }) {
     return (
         <Table
         >
@@ -24,7 +24,7 @@ function ProductTables({ products, deleteProduct, toggle,setEditProduct}) {
                 {
                     products && products.length > 0 ? products.map(item => {
                         return (
-                            <tr>
+                            <tr key={uuidv4}>
                                 <td scope="row">
                                     {item.name}
                                 </td>
@@ -40,7 +40,7 @@ function ProductTables({ products, deleteProduct, toggle,setEditProduct}) {
                                     </Button>
                                 </td>
                                 <td>
-                                    <Button color="warning" onClick={() => {setEditProduct(item);  toggle(true) }}>
+                                    <Button color="warning" onClick={() => { setEditProduct(item); toggle(true) }}>
                                         Edit
                                     </Button>
                                 </td>
